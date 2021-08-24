@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express'
 import { body, validationResult } from 'express-validator'
 import jwt from 'jsonwebtoken'
+
 import { User } from '../models/user'
 import { RequestValidationError } from '../errors/request-validation-error'
 import { BadRequestError } from '../errors/BadRequestError'
@@ -24,6 +25,7 @@ router.post(
     }
 
     const { email, password } = req.body
+
     const existingUser = await User.findOne({ email })
 
     if (existingUser) {
@@ -39,15 +41,12 @@ router.post(
         id: user.id,
         email: user.email,
       },
-      'shouldBeInEnvVariableTestOnly'
+      process.env.JWT_KEY!
     )
 
     // Store it on session object
     req.session = {
       jwt: userJwt,
-      isNew: true,
-      isChanged: false,
-      isPopulated: false,
     }
 
     res.status(201).send(user)
