@@ -1,9 +1,8 @@
 import express, { Request, Response } from 'express'
 import { body } from 'express-validator'
 import jwt from 'jsonwebtoken'
+import { BadRequestError, validateRequest } from '@nptickets30/common'
 
-import { BadRequestError } from '../errors/BadRequestError'
-import { validateRequest } from '../middlewares/validate-request'
 import { User } from '../models/user'
 import { Password } from '../services/password'
 
