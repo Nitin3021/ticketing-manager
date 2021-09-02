@@ -46,7 +46,7 @@ ticketSchema.methods.isReserved = async function () {
   // Run query to check all orders. Find order where ticket does not have *cancelled* status.
   // If such an order is found, then the ticket is reserved.
   const existingOrder = await Order.findOne({
-    ticket: this.id,
+    ticket: this as any,
     status: {
       $in: [
         OrderStatus.Created,
