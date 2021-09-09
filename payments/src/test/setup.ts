@@ -8,6 +8,8 @@ declare global {
 
 jest.mock('../nats-wrapper')
 
+process.env.STRIPE_KEY = '-->PUT YOUR STRIPE TEST KEY HERE<--'
+
 let mongo: any
 beforeAll(async () => {
   process.env.JWT_KEY = 'testingpurposeonly!'
