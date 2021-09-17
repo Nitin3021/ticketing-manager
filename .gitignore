@@ -3,5 +3,5 @@ node_modules
 common
 nats-test
 nats-depl.yaml
-.env
+.env.local
 /.env
