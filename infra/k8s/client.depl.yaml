@@ -15,6 +15,12 @@ spec:
       containers:
         - name: client
           image: nitin3021/client
+          env:
+            - name: NEXT_PUBLIC_STRIPE_PUB_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: next-public-stripe-pub-key
+                  key: NEXT_PUBLIC_STRIPE_PUB_KEY
 ---
 apiVersion: v1
 kind: Service
