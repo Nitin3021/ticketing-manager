@@ -15,7 +15,8 @@ import { natsWrapper } from '../nats-wrapper'
 
 const router = express.Router()
 
-const EXPIRATION_WINDOW_SECONDS = 1 * 60
+// Payment expiration time as set below => (5 * 60 = 5 minutes)
+const EXPIRATION_WINDOW_SECONDS = 5 * 60
 
 router.post(
   '/api/orders',
